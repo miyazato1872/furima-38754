@@ -31,7 +31,7 @@
 | area_id            | integer    | null: false                    |
 | days_to_ship_id    | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| user_id           | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -42,10 +42,10 @@
 
 ## orders テーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| user_id    | references | null: false, foreign_key: true |
-| item_id    | references | null: false, foreign_key: true |
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -59,12 +59,12 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | post_code     | string     | null: false                    |
-| prefecture_id | integer    | null: false                    |
+| area_id       | integer    | null: false                    |
 | city          | string     | null: false                    |
 | address       | string     | null: false                    |
 | building      | string     |                                |
 | phone         | string     | null: false                    |
-| orders_id     | references | null: false, foreign_key: true |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :order
