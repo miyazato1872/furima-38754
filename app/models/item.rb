@@ -6,7 +6,6 @@ class Item < ApplicationRecord
   belongs_to :area
   belongs_to :days_to_ship
 
-
   belongs_to :user
   has_one_attached :image
 
@@ -20,13 +19,12 @@ class Item < ApplicationRecord
   validates :days_to_ship_id,     presence: true
   validates :price,               presence: true
 
-  
-  validates :category_id, numericality: { other_than: 1, message: "can't be blank" } 
-  validates :status_id, numericality: { other_than: 1, message: "can't be blank" } 
-  validates :shipping_charge_id, numericality: { other_than: 1, message: "can't be blank" } 
-  validates :area_id, numericality: { other_than: 1, message: "can't be blank" } 
-  validates :days_to_ship_id, numericality: { other_than: 1, message: "can't be blank" } 
+  validates :category_id,        numericality: { other_than: 1, message: "can't be blank" }
+  validates :status_id,          numericality: { other_than: 1, message: "can't be blank" }
+  validates :shipping_charge_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :area_id,            numericality: { other_than: 1, message: "can't be blank" }
+  validates :days_to_ship_id,    numericality: { other_than: 1, message: "can't be blank" }
 
-  validates_inclusion_of :price, in:300..9999999, message: "Price is invalid", allow_blank: true
+  validates_inclusion_of :price, in: 300..9_999_999, message: 'Price is invalid', allow_blank: true
   validates :price, format: { with: /\A[0-9]+\z/ }, allow_blank: true
 end
