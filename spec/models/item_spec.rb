@@ -99,19 +99,19 @@ RSpec.describe Item, type: :model do
       it 'priceが300より小さい時は登録ができない' do
         @item.price = '299'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price Price is invalid')
+        expect(@item.errors.full_messages).to include('Price is invalid')
       end
 
       it 'priceが9999999より多い時は登録ができない' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price Price is invalid')
+        expect(@item.errors.full_messages).to include('Price is invalid')
       end
 
       it 'priceが半角数値以外の入力であれば登録ができない' do
         @item.price = '１２３あいう'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price Price is invalid')
+        expect(@item.errors.full_messages).to include('Price is invalid')
       end
 
       it 'userが紐づいていなければ登録ができない' do

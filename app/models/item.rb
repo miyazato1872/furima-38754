@@ -20,5 +20,5 @@ class Item < ApplicationRecord
   validates :area_id,            numericality: { other_than: 1, message: "can't be blank" }
   validates :days_to_ship_id,    numericality: { other_than: 1, message: "can't be blank" }
 
-  validates_inclusion_of :price, in: 300..9_999_999, message: 'Price is invalid', allow_blank: true
+  validates_inclusion_of :price, in: 300..9_999_999, message: 'is invalid', allow_blank: true
 end
