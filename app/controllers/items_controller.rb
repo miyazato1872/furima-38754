@@ -49,8 +49,11 @@ class ItemsController < ApplicationController
   def correct_item
     unless @item.user.id == current_user.id
     redirect_to root_path
+    end
   end
 
   def item_find
     @item = Item.find(params[:id])
   end
+
+end
