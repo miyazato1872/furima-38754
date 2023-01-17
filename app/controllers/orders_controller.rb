@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :item_find, only: [:index, :create]
+
   def index
     @order_ship = OrderShip.new
   end
@@ -9,7 +11,7 @@ class OrdersController < ApplicationController
       @order_ship.save
       redirect_to root_path
     else
-      render :index    ##ここ、indexでいいかあとで確認
+      render :index
     end
   end
 
@@ -19,4 +21,7 @@ class OrdersController < ApplicationController
     params.require(:order_ship).permit(:post_code, :area_id,:city, :address, :building,:phone).merge(item_id: params[:item_id], user_id: current_user.id)
   end
 
+  def item_find
+    @item = Item.find(params[:item_id])
+  end
 end

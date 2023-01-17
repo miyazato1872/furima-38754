@@ -5,13 +5,17 @@ class OrderShip
   with_options presence: true do
     validates :user_id
     validates :item_id
-    validates :post_code, format: {with: /\A\d{3}[-]\d{4}\z/}
-    validates :area_id,     numericality: { other_than: 1, message: "can't be blank" }
+    validates :post_code
+    validates :area_id
     validates :city
     validates :address
-    validates :phone, format: {with: /\A\d{10,11}\z/}
+    validates :phone
   end
 
+  validates_format_of :post_code,  with: /\A\d{3}[-]\d{4}\z/, allow_blank: true
+  validates_format_of :phone,      with: /\A\d{10,11}\z/, allow_blank: true
+  validates :area_id,              numericality: { other_than: 1, message: "can't be blank" }, allow_blank: true
+  
   def save
     order = Order.create(user_id: user_id, item_id: item_id)     # 購入情報を保存して、変数orderに代入する
     # 住所を保存する
