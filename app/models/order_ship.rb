@@ -10,7 +10,12 @@ class OrderShip
     validates :city
     validates :address
     validates :phone, format: {with: /\A\d{10,11}\z/}
-    validates :order_id
   end
 
+  def save
+    order = Order.create(user_id: user_id, item_id: item_id)     # 購入情報を保存して、変数orderに代入する
+    # 住所を保存する
+    # order_idには、変数orderのidと指定する
+    Ship.create(post_code: post_code, area_id: area_id, city: city, address: address, building: building, phone: phone, order_id: order.id)
+  end
 end
