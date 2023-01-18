@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   before_action :item_find, only: [:index, :create]
+  before_action :authenticate_user!
+  before_action :correct_order,only: [:index,:create]
 
   def index
     @order_ship = OrderShip.new
@@ -23,5 +25,11 @@ class OrdersController < ApplicationController
 
   def item_find
     @item = Item.find(params[:item_id])
+  end
+
+  def correct_order
+    if Order.exists?(item_id: @item) || @item.user_id == current_user.id
+      redirect_to root_path
+    end
   end
 end
