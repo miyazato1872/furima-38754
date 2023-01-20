@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :items
+  has_many :orders
+
   validates :nickname, presence: true # 空では登録できない
   validates :last_name, presence: true # 空では登録できない
   validates :first_name, presence: true # 空では登録できない
