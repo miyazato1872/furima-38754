@@ -1,6 +1,6 @@
 class OrderShip
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :post_code, :area_id, :city, :address, :building, :phone, :order_id
+  attr_accessor :user_id, :item_id, :post_code, :area_id, :city, :address, :building, :phone, :order_id, :token
 
   with_options presence: true do
     validates :user_id
@@ -10,6 +10,7 @@ class OrderShip
     validates :city
     validates :address
     validates :phone
+    validates :token
   end
 
   validates_format_of :post_code,  with: /\A\d{3}[-]\d{4}\z/, allow_blank: true

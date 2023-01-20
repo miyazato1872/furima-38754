@@ -57,27 +57,33 @@ RSpec.describe OrderShip, type: :model do
       end
       
       it 'phoneが10桁以下では登録できない'do
-      @order_ship.phone = '123456789'
-      @order_ship.valid?
-      expect(@order_ship.errors.full_messages).to include("Phone is invalid")
+        @order_ship.phone = '123456789'
+        @order_ship.valid?
+        expect(@order_ship.errors.full_messages).to include("Phone is invalid")
       end
 
       it 'phoneが12桁以上では登録できない'do
-      @order_ship.phone = '1234567890123'
-      @order_ship.valid?
-      expect(@order_ship.errors.full_messages).to include("Phone is invalid")
+        @order_ship.phone = '1234567890123'
+        @order_ship.valid?
+        expect(@order_ship.errors.full_messages).to include("Phone is invalid")
       end
 
       it 'phoneが半角数値以外で入力されると登録できない'do
-      @order_ship.phone = '０９０１２３４５６７８'
-      @order_ship.valid?
-      expect(@order_ship.errors.full_messages).to include("Phone is invalid")
+        @order_ship.phone = '０９０１２３４５６７８'
+        @order_ship.valid?
+        expect(@order_ship.errors.full_messages).to include("Phone is invalid")
       end
 
       it 'phoneはハイフンをつけると登録できない'do
-      @order_ship.phone = '03-123-5678'
-      @order_ship.valid?
-      expect(@order_ship.errors.full_messages).to include("Phone is invalid")
+        @order_ship.phone = '03-123-5678'
+        @order_ship.valid?
+        expect(@order_ship.errors.full_messages).to include("Phone is invalid")
+      end
+
+      it 'tokenが空では登録できない'do
+        @order_ship.token = ''
+        @order_ship.valid?
+        expect(@order_ship.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
