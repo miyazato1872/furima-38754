@@ -29,58 +29,58 @@ RSpec.describe OrderShip, type: :model do
       it 'post_codeは、「3桁ハイフン4桁」の半角文字列で入力しないと登録できない' do
         @order_ship.post_code = '1234567'
         @order_ship.valid?
-        expect(@order_ship.errors.full_messages).to include("Post code is invalid")
+        expect(@order_ship.errors.full_messages).to include('Post code is invalid')
       end
 
       it 'area_idが空では登録できない' do
         @order_ship.area_id = ''
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("Area can't be blank")
-      end    
-      
+      end
+
       it 'cityが空では登録できない' do
         @order_ship.city = ''
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("City can't be blank")
       end
-      
+
       it 'addressが空では登録できない' do
         @order_ship.address = ''
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("Address can't be blank")
       end
-      
+
       it 'phoneが空では登録できない' do
         @order_ship.phone = ''
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("Phone can't be blank")
       end
-      
-      it 'phoneが10桁以下では登録できない'do
+
+      it 'phoneが10桁以下では登録できない' do
         @order_ship.phone = '123456789'
         @order_ship.valid?
-        expect(@order_ship.errors.full_messages).to include("Phone is invalid")
+        expect(@order_ship.errors.full_messages).to include('Phone is invalid')
       end
 
-      it 'phoneが12桁以上では登録できない'do
+      it 'phoneが12桁以上では登録できない' do
         @order_ship.phone = '1234567890123'
         @order_ship.valid?
-        expect(@order_ship.errors.full_messages).to include("Phone is invalid")
+        expect(@order_ship.errors.full_messages).to include('Phone is invalid')
       end
 
-      it 'phoneが半角数値以外で入力されると登録できない'do
+      it 'phoneが半角数値以外で入力されると登録できない' do
         @order_ship.phone = '０９０１２３４５６７８'
         @order_ship.valid?
-        expect(@order_ship.errors.full_messages).to include("Phone is invalid")
+        expect(@order_ship.errors.full_messages).to include('Phone is invalid')
       end
 
-      it 'phoneはハイフンをつけると登録できない'do
+      it 'phoneはハイフンをつけると登録できない' do
         @order_ship.phone = '03-123-5678'
         @order_ship.valid?
-        expect(@order_ship.errors.full_messages).to include("Phone is invalid")
+        expect(@order_ship.errors.full_messages).to include('Phone is invalid')
       end
 
-      it 'tokenが空では登録できない'do
+      it 'tokenが空では登録できない' do
         @order_ship.token = ''
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("Token can't be blank")

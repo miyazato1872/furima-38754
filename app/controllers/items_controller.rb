@@ -24,9 +24,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.order != nil
-      redirect_to root_path
-    end
+    return if @item.order.nil?
+
+    redirect_to root_path
   end
 
   def update
@@ -50,13 +50,12 @@ class ItemsController < ApplicationController
   end
 
   def correct_item
-    unless @item.user.id == current_user.id
+    return if @item.user.id == current_user.id
+
     redirect_to root_path
-    end
   end
 
   def item_find
     @item = Item.find(params[:id])
   end
-
 end

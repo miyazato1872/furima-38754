@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth   # これはBASIC認証のためのコード
-  before_action :configure_permitted_parameters, if: :devise_controller?   ##ログインしてない場合、ログインページに遷移させるメソッド
+  before_action :configure_permitted_parameters, if: :devise_controller? # #ログインしてない場合、ログインページに遷移させるメソッド
 
   private
 
