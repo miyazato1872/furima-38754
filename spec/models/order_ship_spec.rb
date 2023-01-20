@@ -56,7 +56,7 @@ RSpec.describe OrderShip, type: :model do
         expect(@order_ship.errors.full_messages).to include("Phone can't be blank")
       end
 
-      it 'phoneが10桁以下では登録できない' do
+      it 'phoneが9桁以下では登録できない' do
         @order_ship.phone = '123456789'
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include('Phone is invalid')
