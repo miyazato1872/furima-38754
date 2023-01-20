@@ -33,7 +33,7 @@ RSpec.describe OrderShip, type: :model do
       end
 
       it 'area_idが空では登録できない' do
-        @order_ship.area_id = ''
+        @order_ship.area_id = '1'
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("Area can't be blank")
       end
