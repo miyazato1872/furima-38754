@@ -29,4 +29,6 @@ ja:
         address: 番地
         phone: 電話番号
         token: 正しいクレジットカード情報
+        user_id: ユーザー
+        item_id: アイテム
 

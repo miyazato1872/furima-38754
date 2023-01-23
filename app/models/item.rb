@@ -21,5 +21,5 @@ class Item < ApplicationRecord
   validates :area_id,            numericality: { other_than: 1, message: "を選択してください" }
   validates :days_to_ship_id,    numericality: { other_than: 1, message: "を選択してください" }
 
-  validates_inclusion_of :price, in: 300..9_999_999, message: 'は300円〜9,999,999円で設定してください', allow_blank: true
+  validates_inclusion_of :price, in: 300..9_999_999, message: "が不正な値です", allow_blank: true
 end

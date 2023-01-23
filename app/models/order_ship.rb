@@ -14,7 +14,7 @@ class OrderShip
   end
 
   validates_format_of :post_code,  with: /\A\d{3}-\d{4}\z/, message:"はハイフンを使用して正しく入力してください", allow_blank: true
-  validates_format_of :phone,      with: /\A\d{10,11}\z/, message:"はハイフンを使用せず入力してください", allow_blank: true
+  validates_format_of :phone,      with: /\A\d{10,11}\z/, message:"が不正な値です。正しく入力してください。", allow_blank: true
   validates :area_id,              numericality: { other_than: 1, message: "を選択してください" }, allow_blank: true
 
   def save
