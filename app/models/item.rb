@@ -13,13 +13,13 @@ class Item < ApplicationRecord
   validates :image,               presence: true
   validates :name,                presence: true
   validates :description,         presence: true
-  validates :price,               presence: true
 
   validates :category_id,        numericality: { other_than: 1, message: "を選択してください" }
   validates :status_id,          numericality: { other_than: 1, message: "を選択してください" }
   validates :shipping_charge_id, numericality: { other_than: 1, message: "を選択してください" }
   validates :area_id,            numericality: { other_than: 1, message: "を選択してください" }
   validates :days_to_ship_id,    numericality: { other_than: 1, message: "を選択してください" }
+  validates :price,               presence: true
 
   validates_inclusion_of :price, in: 300..9_999_999, message: "が不正な値です", allow_blank: true
 end
