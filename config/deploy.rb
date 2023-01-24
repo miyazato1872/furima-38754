@@ -30,4 +30,7 @@ namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
   end
+
+  # 自動デプロイ実行エラー後の追加記述
+  set :branch, 'main'
 end
