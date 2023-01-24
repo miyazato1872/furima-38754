@@ -7,7 +7,6 @@ set :application, 'furima-38754'
 # どのリポジトリからアプリをpullするかを指定する
 set :repo_url,  'git@github.com:miyazato1872/furima-38754.git'
 
-# 自動デプロイ実行エラー後の追加記述
 set :branch, 'main'
 
 # バージョンが変わっても共通で参照するディレクトリを指定
@@ -33,5 +32,4 @@ namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
   end
-
 end
